@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitty Text Gen</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">Kitty Text Gen</div>
+            <div class="header-controls">
+                <div class="language-switcher">
+                    <button data-lang="en">EN</button>
+                    <button data-lang="pl" class="active">PL</button>
+                </div>
+                <button id="theme-toggle" title="Zmień motyw">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.59a.75.75 0 11-1.06-1.061l1.59-1.591a.75.75 0 011.062 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.894 17.894a.75.75 0 01-1.062 0l-1.59-1.591a.75.75 0 111.06-1.06l1.591 1.59a.75.75 0 010 1.062zM12 17.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM6.106 18.894a.75.75 0 010-1.06l1.591-1.59a.75.75 0 111.06 1.061l-1.59 1.591a.75.75 0 01-1.062 0zM4.5 12a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM6.106 5.106a.75.75 0 011.062 0l1.59 1.591a.75.75 0 11-1.06 1.06l-1.591-1.59a.75.75 0 010-1.062z"></path></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-3.818 2.04-7.174 5.167-8.942a.75.75 0 01.819.162z" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div id="error-box" class="hidden"></div>
+            <div class="controls-grid">
+                <div class="control-column">
+                    <div class="control-box">
+                        <h3 data-i18n="mainOptions">Main Options</h3>
+                        <div class="form-group">
+                            <label for="text-input" data-i18n="textToGenerate">Text to generate</label>
+                            <input type="text" id="text-input" value="PIXELS" required>
+                        </div>
+                    </div>
+
+                    <details class="control-box" open>
+                        <summary><h3 data-i18n="advancedOptions">Advanced Options</h3></summary>
+
+                        <div id="mixing-options-box" class="form-group hidden">
+                            <label for="mixing-mode-select" data-i18n="colorMixing">Color Mixing</label>
+                            <select id="mixing-mode-select">
+                                <option value="per-letter" data-i18n="mixingPerLetter">Per Letter</option>
+                                <option value="per-word" data-i18n="mixingPerWord">Per Word</option>
+                                <option value="checkerboard" data-i18n="mixingCheckerboard">Checkerboard</option>
+                                <option value="random-letter" data-i18n="mixingRandomLetter">Random (Per Letter)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="size-slider" data-i18n="pixelScale">Pixel Scale</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="size-slider" value="5" min="1" max="25">
+                                <input type="number" id="size-input" class="slider-input" value="5" min="1" max="25">
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="space-width-slider" data-i18n="spaceWidth">Space Width</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="space-width-slider" value="2" min="0" max="20">
+                                <input type="number" id="space-width-input" class="slider-input" value="2" min="0" max="20">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="letter-spacing-slider" data-i18n="letterSpacing">Letter Spacing</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="letter-spacing-slider" value="1" min="-5" max="10">
+                                <input type="number" id="letter-spacing-input" class="slider-input" value="1" min="-5" max="10">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="orientation-select" data-i18n="orientation">Orientation</label>
+                            <select id="orientation-select">
+                                <option value="horizontal" data-i18n="orientationHorizontal">Horizontal</option>
+                                <option value="vertical" data-i18n="orientationVertical">Vertical</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                             <button type="button" id="reset-btn" class="reset-btn" data-i18n="resetSettings">Reset Settings</button>
+                        </div>
+                    </details>
+
+                    <details class="control-box" open>
+                        <summary><h3 data-i18n="effectsAndBg">Effects & Background</h3></summary>
+                        <div class="form-group">
+                            <label for="bg-type-select" data-i18n="background">Background</label>
+                            <select id="bg-type-select">
+                                <option value="transparent" data-i18n="bgTransparent">Transparent</option>
+                                <option value="solid" data-i18n="bgSolid">Solid Color</option>
+                            </select>
+                        </div>
+                        <div class="form-group toggle-group hidden" id="bg-color-controls">
+                            <label data-i18n="color">Color</label>
+                            <button type="button" class="effect-color-picker" id="bg-color-picker" title="Pick Background Color"></button>
+                        </div>
+                        <div class="form-group toggle-group">
+                            <label for="outline-toggle" data-i18n="outline">Outline</label>
+                            <div class="effect-controls">
+                                <button type="button" class="effect-color-picker" id="outline-color-picker" title="Pick Outline Color"></button>
+                                <input type="checkbox" id="outline-toggle" class="toggle-switch">
+                            </div>
+                        </div>
+                        <div class="form-group toggle-group">
+                            <label for="shadow-toggle" data-i18n="shadow">Drop Shadow</label>
+                            <div class="effect-controls">
+                                <button type="button" class="effect-color-picker" id="shadow-color-picker" title="Pick Shadow Color"></button>
+                                <input type="checkbox" id="shadow-toggle" class="toggle-switch">
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="results-column">
+                    <div class="results-box">
+                        <div class="results-header">
+                            <h3 data-i18n="preview">Preview</h3>
+                            </div>
+                        <div id="results-container" class="results-grid">
+                           <canvas id="canvas"></canvas>
+                        </div>
+                        <div class="form-group zoom-control">
+                            <label for="zoom-slider" data-i18n="zoom">Zoom</label>
+                            <input type="range" id="zoom-slider" value="1" min="0.5" max="5" step="0.1">
+                        </div>
+                        <div class="action-buttons">
+                            <a href="#" id="download-link" class="download-btn" data-i18n="downloadPNG">Download PNG</a>
+                            <button type="button" id="copy-btn" class="copy-btn" data-i18n="copyImage">Copy Image</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="palettes-container">
+            <div class="palette-section">
+                <div class="palette-header">
+                    <h4 data-i18n="freeColors">Free Colors</h4>
+                    <button type="button" class="btn-select-all" data-palette="free-colors" data-i18n="selectAll">Select All</button>
+                </div>
+                <div id="free-colors" class="color-palette">
+                </div>
+            </div>
+            <div class="palette-section">
+                <div class="palette-header">
+                    <h4 data-i18n="paidColors">Paid Colors</h4>
+                    <button type="button" class="btn-select-all" data-palette="paid-colors" data-i18n="selectAll">Select All</button>
+                </div>
+                <div id="paid-colors" class="color-palette">
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>

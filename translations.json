@@ -1,0 +1,36 @@
+{
+  "en": {
+    "mainOptions": "Main Options", "textToGenerate": "Text to generate",
+    "advancedOptions": "Advanced Options", "pixelScale": "Pixel Scale", "orientation": "Orientation",
+    "orientationHorizontal": "Horizontal", "orientationVertical": "Vertical", "colorMixing": "Color Mixing",
+    "mixingSolid": "Solid Color", "mixingPerLetter": "Per Letter", "mixingPerWord": "Per Word",
+    "mixingCheckerboard": "Checkerboard", "mixingRandomLetter": "Random (Per Letter)",
+    "preview": "Preview", "downloadPNG": "Download PNG",
+    "freeColors": "Free Colors", "paidColors": "Paid Colors", "selectAll": "Select All",
+    "unselectAll": "Unselect All", "themeTitle": "Change theme", "zoom": "Zoom", "spaceWidth": "Space Width",
+    "effectsAndBg": "Effects & Background", "background": "Background", "bgTransparent": "Transparent",
+    "bgSolid": "Solid Color", "color": "Color",
+    "outline": "Outline", "shadow": "Drop Shadow",
+    "letterSpacing": "Letter Spacing",
+    "copyImage": "Copy Image",
+    "resetSettings": "Reset Settings",
+    "copiedSuccess": "Copied!"
+  },
+  "pl": {
+    "mainOptions": "Główne Opcje", "textToGenerate": "Tekst do wygenerowania",
+    "advancedOptions": "Opcje Zaawansowane", "pixelScale": "Skala Piksela", "orientation": "Orientacja",
+    "orientationHorizontal": "Poziomo", "orientationVertical": "Pionowo", "colorMixing": "Mieszanie Kolorów",
+    "mixingSolid": "Jeden Kolor", "mixingPerLetter": "Na Literę", "mixingPerWord": "Na Słowo",
+    "mixingCheckerboard": "Szachownica", "mixingRandomLetter": "Losowy (Na Literę)",
+    "preview": "Podgląd", "downloadPNG": "Pobierz PNG",
+    "freeColors": "Darmowe Kolory", "paidColors": "Płatne Kolory", "selectAll": "Zaznacz wszystkie",
+    "unselectAll": "Odznacz wszystkie", "themeTitle": "Zmień motyw", "zoom": "Powiększenie", "spaceWidth": "Szerokość Spacji",
+    "effectsAndBg": "Efekty i Tło", "background": "Tło", "bgTransparent": "Przezroczyste",
+    "bgSolid": "Jednolity Kolor", "color": "Kolor",
+    "outline": "Obrys", "shadow": "Cień",
+    "letterSpacing": "Odstęp Między Literami",
+    "copyImage": "Kopiuj Obrazek",
+    "resetSettings": "Resetuj Ustawienia",
+    "copiedSuccess": "Skopiowano!"
+  }
+}
